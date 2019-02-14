@@ -34,6 +34,7 @@ namespace PlexRenamer_DotNet
         {
             return Path.GetExtension(FileNames[0]);
         }
+        // funtion for command line testing
         public void DisplayListString(List<string> ListToDisplay)
         {
             for (int i = 0; i < ListToDisplay.Count(); i++)
@@ -46,10 +47,12 @@ namespace PlexRenamer_DotNet
             List<string> NewNames = new List<string>();
             string SeasonString = FileData.Season.ToString();
             int EpCount = 1;
+
             if (FileData.Season < 10)
             {
                 SeasonString = "0" + FileData.Season;
             }
+
             for (int i = 0; i < OldNameCount; i++)
             {
                 if (EpCount < 10)
@@ -62,6 +65,38 @@ namespace PlexRenamer_DotNet
                 }
                 EpCount++;
             }
+
+            return NewNames;
+        }
+        public List<string> GenerateNewNamesForSubs(List<string> OldNames, int OldNameCount)
+        {
+            List<string> NewNames = new List<string>();
+            string SeasonString = FileData.Season.ToString();
+            int EpCount = 1;
+
+            if (String.IsNullOrEmpty(FileData.SubLang))
+            {
+                FileData.SubLang = "eng";
+            }
+
+            if (FileData.Season < 10)
+            {
+                SeasonString = "0" + FileData.Season;
+            }
+
+            for (int i = 0; i < OldNameCount; i++)
+            {
+                if (EpCount < 10)
+                {
+                    NewNames.Add(FileData.Path + "\\" + FileData.NameOfShow + " - " + "s" + SeasonString + "e" + "0" + EpCount + "." + FileData.SubLang + FileData.FileType);
+                }
+                else
+                {
+                    NewNames.Add(FileData.Path + "\\" + FileData.NameOfShow + " - " + "s" + SeasonString + "e" + EpCount + "." + FileData.SubLang + FileData.FileType);
+                }
+                EpCount++;
+            }
+
             return NewNames;
         }
 
@@ -71,6 +106,7 @@ namespace PlexRenamer_DotNet
             {
                 System.IO.File.Move(FileData.OldFileNames[i], FileData.NewFileNames[i]);
             }
+
             Console.WriteLine("Done");
         }
     }

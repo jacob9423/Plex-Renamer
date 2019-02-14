@@ -39,6 +39,9 @@
             this.btnRename = new System.Windows.Forms.Button();
             this.btnCheck = new System.Windows.Forms.Button();
             this.listData = new System.Windows.Forms.ListView();
+            this.chkSubtitles = new System.Windows.Forms.CheckBox();
+            this.txtSubtitles = new System.Windows.Forms.TextBox();
+            this.lblSubtitles = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.numupSeason)).BeginInit();
             this.SuspendLayout();
             // 
@@ -115,7 +118,7 @@
             // 
             // btnRename
             // 
-            this.btnRename.Location = new System.Drawing.Point(18, 228);
+            this.btnRename.Location = new System.Drawing.Point(18, 240);
             this.btnRename.Name = "btnRename";
             this.btnRename.Size = new System.Drawing.Size(75, 23);
             this.btnRename.TabIndex = 7;
@@ -125,7 +128,7 @@
             // 
             // btnCheck
             // 
-            this.btnCheck.Location = new System.Drawing.Point(18, 199);
+            this.btnCheck.Location = new System.Drawing.Point(18, 211);
             this.btnCheck.Name = "btnCheck";
             this.btnCheck.Size = new System.Drawing.Size(75, 23);
             this.btnCheck.TabIndex = 8;
@@ -137,15 +140,47 @@
             // 
             this.listData.Location = new System.Drawing.Point(245, 69);
             this.listData.Name = "listData";
-            this.listData.Size = new System.Drawing.Size(550, 376);
+            this.listData.Size = new System.Drawing.Size(549, 376);
             this.listData.TabIndex = 9;
             this.listData.UseCompatibleStateImageBehavior = false;
+            // 
+            // chkSubtitles
+            // 
+            this.chkSubtitles.AutoSize = true;
+            this.chkSubtitles.Location = new System.Drawing.Point(125, 160);
+            this.chkSubtitles.Name = "chkSubtitles";
+            this.chkSubtitles.Size = new System.Drawing.Size(88, 17);
+            this.chkSubtitles.TabIndex = 10;
+            this.chkSubtitles.Text = "Subtitle files?";
+            this.chkSubtitles.UseVisualStyleBackColor = true;
+            this.chkSubtitles.CheckedChanged += new System.EventHandler(this.chkSubtitles_CheckedChanged);
+            // 
+            // txtSubtitles
+            // 
+            this.txtSubtitles.Location = new System.Drawing.Point(140, 211);
+            this.txtSubtitles.Name = "txtSubtitles";
+            this.txtSubtitles.Size = new System.Drawing.Size(45, 20);
+            this.txtSubtitles.TabIndex = 11;
+            this.txtSubtitles.Visible = false;
+            // 
+            // lblSubtitles
+            // 
+            this.lblSubtitles.AutoSize = true;
+            this.lblSubtitles.Location = new System.Drawing.Point(64, 195);
+            this.lblSubtitles.Name = "lblSubtitles";
+            this.lblSubtitles.Size = new System.Drawing.Size(175, 13);
+            this.lblSubtitles.TabIndex = 12;
+            this.lblSubtitles.Text = "Language 3 letters (Default English)";
+            this.lblSubtitles.Visible = false;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.lblSubtitles);
+            this.Controls.Add(this.txtSubtitles);
+            this.Controls.Add(this.chkSubtitles);
             this.Controls.Add(this.listData);
             this.Controls.Add(this.btnCheck);
             this.Controls.Add(this.btnRename);
@@ -157,7 +192,7 @@
             this.Controls.Add(this.lblPath);
             this.Controls.Add(this.label1);
             this.Name = "Form1";
-            this.Text = "Plex Renamer Dotnet 1.0.6 Beta";
+            this.Text = "Plex Renamer Dotnet 1.0.11 Beta";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.numupSeason)).EndInit();
             this.ResumeLayout(false);
@@ -178,6 +213,9 @@
         private System.Windows.Forms.Button btnRename;
         private System.Windows.Forms.Button btnCheck;
         private System.Windows.Forms.ListView listData;
+        private System.Windows.Forms.CheckBox chkSubtitles;
+        private System.Windows.Forms.TextBox txtSubtitles;
+        private System.Windows.Forms.Label lblSubtitles;
     }
 }
 
