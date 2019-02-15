@@ -34,40 +34,27 @@ namespace PlexRenamer_DotNet
 
         private void btnCheck_Click(object sender, EventArgs e)
         {
-            listData.Clear();
+            lblProgramDone.Text = "";
 
-            if (app.FileData.NoPath)
-            {
-                DirectforyFinder.ShowDialog();
-                app.FileData.Path = DirectforyFinder.SelectedPath;
-                app.FileData.NoPath = false;
-            }
+            ClearDataGrid();
 
-            app.FileData.NameOfShow = txtShow.Text;
-            app.FileData.Season = Convert.ToInt32(numupSeason.Value);
-            app.GetFileList();
-            app.GetExt(app.FileData.OldFileNames);
+            CheckIfNoPath();
 
-            for (int i = 0; i < app.FileData.OldFileNames.Count; i++)
-            {
-                listData.Items.Add(app.FileData.OldFileNames[i].ToString());
-            }
+            GetShowData();
+
+            DisplayData(app.FileData.OldFileNames);
 
         }
 
         private void btnRename_Click(object sender, EventArgs e)
         {
-            if(app.FileData.NoPath)
-            {
-                DirectforyFinder.ShowDialog();
-                app.FileData.Path = DirectforyFinder.SelectedPath;
-                app.FileData.NoPath = false;
-            }
+            lblProgramDone.Text = "";
 
-            app.FileData.NameOfShow = txtShow.Text;
-            app.FileData.Season = Convert.ToInt32(numupSeason.Value);
-            app.GetFileList();
-            app.FileData.FileType = app.GetExt(app.FileData.OldFileNames);
+            ClearDataGrid();
+
+            CheckIfNoPath();
+
+            GetShowData();
 
             if (lblSubtitles.Visible)
             {
@@ -77,10 +64,21 @@ namespace PlexRenamer_DotNet
             {
                 app.FileData.NewFileNames = app.GenerateNewNames(app.FileData.OldFileNames, app.FileData.NumOfFiles);
             }
-         
-            MessageBox.Show("You are about to rename files in " + app.FileData.Path);
-            app.RenameFiles();
-            MessageBox.Show("done");
+
+            string message = "You are about to rename files in " + app.FileData.Path;
+            string title = "Are you Sure?";
+
+            MessageBoxButtons buttons = MessageBoxButtons.YesNo;
+            DialogResult result = MessageBox.Show(message, title, buttons);
+
+            if (result == DialogResult.Yes)
+            {
+                app.RenameFiles();
+                lblProgramDone.Text = "Done!";
+                app.GetFileList();
+                DisplayData(app.FileData.OldFileNames);
+            }
+            
             app.FileData.ClearData();
         }
 
@@ -97,5 +95,37 @@ namespace PlexRenamer_DotNet
                 txtSubtitles.Visible = false;
             }
         }
+
+        private void GetShowData()
+        {
+            app.FileData.NameOfShow = txtShow.Text;
+            app.FileData.Season = Convert.ToInt32(numupSeason.Value);
+            app.GetFileList();
+            app.FileData.FileType = app.GetExt(app.FileData.OldFileNames);
+        }
+        
+        private void DisplayData(List<string> listToDisplay)
+        {
+            foreach (var list in listToDisplay)
+            {
+                dgvData.Rows.Add(list);
+            }
+        }
+        private void ClearDataGrid()
+        {
+            dgvData.Rows.Clear();
+            dgvData.Refresh();
+        }
+        
+        private void CheckIfNoPath()
+        {
+            if (app.FileData.NoPath)
+            {
+                DirectforyFinder.ShowDialog();
+                app.FileData.Path = DirectforyFinder.SelectedPath;
+                app.FileData.NoPath = false;
+            }
+        }
+       
     }
 }

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.DirectforyFinder = new System.Windows.Forms.FolderBrowserDialog();
             this.lblPath = new System.Windows.Forms.Label();
@@ -38,11 +39,14 @@
             this.numupSeason = new System.Windows.Forms.NumericUpDown();
             this.btnRename = new System.Windows.Forms.Button();
             this.btnCheck = new System.Windows.Forms.Button();
-            this.listData = new System.Windows.Forms.ListView();
             this.chkSubtitles = new System.Windows.Forms.CheckBox();
             this.txtSubtitles = new System.Windows.Forms.TextBox();
             this.lblSubtitles = new System.Windows.Forms.Label();
+            this.dgvData = new System.Windows.Forms.DataGridView();
+            this.lblProgramDone = new System.Windows.Forms.Label();
+            this.FilePath = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.numupSeason)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvData)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -66,7 +70,7 @@
             // 
             // btnChooseDirectory
             // 
-            this.btnChooseDirectory.Location = new System.Drawing.Point(18, 69);
+            this.btnChooseDirectory.Location = new System.Drawing.Point(18, 70);
             this.btnChooseDirectory.Name = "btnChooseDirectory";
             this.btnChooseDirectory.Size = new System.Drawing.Size(187, 23);
             this.btnChooseDirectory.TabIndex = 2;
@@ -136,14 +140,6 @@
             this.btnCheck.UseVisualStyleBackColor = true;
             this.btnCheck.Click += new System.EventHandler(this.btnCheck_Click);
             // 
-            // listData
-            // 
-            this.listData.Location = new System.Drawing.Point(245, 69);
-            this.listData.Name = "listData";
-            this.listData.Size = new System.Drawing.Size(549, 376);
-            this.listData.TabIndex = 9;
-            this.listData.UseCompatibleStateImageBehavior = false;
-            // 
             // chkSubtitles
             // 
             this.chkSubtitles.AutoSize = true;
@@ -173,15 +169,50 @@
             this.lblSubtitles.Text = "Language 3 letters (Default English)";
             this.lblSubtitles.Visible = false;
             // 
+            // dgvData
+            // 
+            this.dgvData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvData.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.FilePath});
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvData.DefaultCellStyle = dataGridViewCellStyle2;
+            this.dgvData.Location = new System.Drawing.Point(239, 69);
+            this.dgvData.Name = "dgvData";
+            this.dgvData.Size = new System.Drawing.Size(534, 376);
+            this.dgvData.TabIndex = 13;
+            // 
+            // lblProgramDone
+            // 
+            this.lblProgramDone.AutoSize = true;
+            this.lblProgramDone.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblProgramDone.ForeColor = System.Drawing.Color.Black;
+            this.lblProgramDone.Location = new System.Drawing.Point(120, 240);
+            this.lblProgramDone.Name = "lblProgramDone";
+            this.lblProgramDone.Size = new System.Drawing.Size(0, 25);
+            this.lblProgramDone.TabIndex = 14;
+            // 
+            // FilePath
+            // 
+            this.FilePath.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.FilePath.HeaderText = "File Path";
+            this.FilePath.Name = "FilePath";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.lblProgramDone);
+            this.Controls.Add(this.dgvData);
             this.Controls.Add(this.lblSubtitles);
             this.Controls.Add(this.txtSubtitles);
             this.Controls.Add(this.chkSubtitles);
-            this.Controls.Add(this.listData);
             this.Controls.Add(this.btnCheck);
             this.Controls.Add(this.btnRename);
             this.Controls.Add(this.numupSeason);
@@ -192,9 +223,10 @@
             this.Controls.Add(this.lblPath);
             this.Controls.Add(this.label1);
             this.Name = "Form1";
-            this.Text = "Plex Renamer Dotnet 1.0.11 Beta";
+            this.Text = "Plex Renamer Dotnet 1.1.0 Beta";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.numupSeason)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvData)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -212,10 +244,12 @@
         private System.Windows.Forms.NumericUpDown numupSeason;
         private System.Windows.Forms.Button btnRename;
         private System.Windows.Forms.Button btnCheck;
-        private System.Windows.Forms.ListView listData;
         private System.Windows.Forms.CheckBox chkSubtitles;
         private System.Windows.Forms.TextBox txtSubtitles;
         private System.Windows.Forms.Label lblSubtitles;
+        private System.Windows.Forms.DataGridView dgvData;
+        private System.Windows.Forms.Label lblProgramDone;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FilePath;
     }
 }
 

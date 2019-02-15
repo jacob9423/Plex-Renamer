@@ -8,7 +8,6 @@ namespace PlexRenamer_DotNet
 {
     class Data
     {
-        public string[] OldFileNameString { get; set; }
         public List<string> OldFileNames { get; set; }
         public List<string> NewFileNames { get; set; }
         public string Path { get; set; }
@@ -23,7 +22,6 @@ namespace PlexRenamer_DotNet
         {
             OldFileNames.Clear();
             NewFileNames.Clear();
-            Array.Clear(OldFileNameString ,0, OldFileNameString.Length);
             Path = "null";
             NoPath = true;
             FileType = "null";

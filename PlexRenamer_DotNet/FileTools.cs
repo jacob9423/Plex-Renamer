@@ -25,8 +25,7 @@ namespace PlexRenamer_DotNet
         public void GetFileList()
         {
             FileData.NumOfFiles = Directory.GetFiles(FileData.Path).Count();
-            FileData.OldFileNameString = Directory.GetFiles(FileData.Path);
-            FileData.OldFileNames = FileData.OldFileNameString.ToList();
+            FileData.OldFileNames = Directory.GetFiles(FileData.Path).ToList();
             FileData.OldFileNames = FileData.OldFileNames.OrderBy(n => n).ToList();
             FileData.NumOfFiles = FileData.OldFileNames.Count();
         }
