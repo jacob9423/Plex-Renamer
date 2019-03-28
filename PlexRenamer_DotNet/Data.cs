@@ -17,6 +17,7 @@ namespace PlexRenamer_DotNet
         public int Season { get; set; }
         public string SubLang { get; set; }
         public bool NoPath = true;
+        public int StartingEp = 1;
 
         public void ClearData()
         {
@@ -27,7 +28,7 @@ namespace PlexRenamer_DotNet
             FileType = "null";
             NumOfFiles = 0;
             NameOfShow = "Please enter show name";
-            SubLang = "null";
+            SubLang = null;
             Season = 0;
         }
     }

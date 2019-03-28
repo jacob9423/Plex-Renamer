@@ -11,17 +11,7 @@ namespace PlexRenamer_DotNet
     {
         public Data FileData = new Data();
 
-        public void TestFun()
-        {
-            GetFileList();
-            FileData.FileType = GetExt(FileData.OldFileNames);
-            DisplayListString(FileData.OldFileNames);
-            FileData.NewFileNames = GenerateNewNames(FileData.OldFileNames, FileData.NumOfFiles);
-            Console.WriteLine("New Names --------------------------------------------");
-            DisplayListString(FileData.NewFileNames);
-            RenameFiles();
-            Console.ReadKey();
-        }
+      
         public void GetFileList()
         {
             FileData.NumOfFiles = Directory.GetFiles(FileData.Path).Count();
@@ -29,23 +19,17 @@ namespace PlexRenamer_DotNet
             FileData.OldFileNames = FileData.OldFileNames.OrderBy(n => n).ToList();
             FileData.NumOfFiles = FileData.OldFileNames.Count();
         }
+
         public string GetExt(List<string> FileNames)
         {
             return Path.GetExtension(FileNames[0]);
         }
-        // funtion for command line testing
-        public void DisplayListString(List<string> ListToDisplay)
-        {
-            for (int i = 0; i < ListToDisplay.Count(); i++)
-            {
-                Console.WriteLine(ListToDisplay[i]);
-            }
-        }
-        public List<string> GenerateNewNames(List<string> OldNames, int OldNameCount)
+        
+        public List<string> GenerateNewNames(List<string> OldNames, int OldNameCount,int StartingEp)
         {
             List<string> NewNames = new List<string>();
             string SeasonString = FileData.Season.ToString();
-            int EpCount = 1;
+            int EpCount = StartingEp;
 
             if (FileData.Season < 10)
             {
@@ -67,11 +51,11 @@ namespace PlexRenamer_DotNet
 
             return NewNames;
         }
-        public List<string> GenerateNewNamesForSubs(List<string> OldNames, int OldNameCount)
+        public List<string> GenerateNewNamesForSubs(List<string> OldNames, int OldNameCount, int StartingEp)
         {
             List<string> NewNames = new List<string>();
             string SeasonString = FileData.Season.ToString();
-            int EpCount = 1;
+            int EpCount = StartingEp;
 
             if (String.IsNullOrEmpty(FileData.SubLang))
             {

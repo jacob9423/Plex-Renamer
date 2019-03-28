@@ -50,19 +50,23 @@ namespace PlexRenamer_DotNet
         {
             lblProgramDone.Text = "";
 
+            app.FileData.StartingEp = (int)numStartingCount.Value;
+
             ClearDataGrid();
 
             CheckIfNoPath();
 
             GetShowData();
 
+            
+
             if (lblSubtitles.Visible)
             {
-                app.FileData.NewFileNames = app.GenerateNewNamesForSubs(app.FileData.OldFileNames, app.FileData.NumOfFiles);
+                app.FileData.NewFileNames = app.GenerateNewNamesForSubs(app.FileData.OldFileNames, app.FileData.NumOfFiles, (int)app.FileData.StartingEp);
             }
             else
             {
-                app.FileData.NewFileNames = app.GenerateNewNames(app.FileData.OldFileNames, app.FileData.NumOfFiles);
+                app.FileData.NewFileNames = app.GenerateNewNames(app.FileData.OldFileNames, app.FileData.NumOfFiles,(int)app.FileData.StartingEp);
             }
 
             string message = "You are about to rename files in " + app.FileData.Path;
@@ -126,6 +130,20 @@ namespace PlexRenamer_DotNet
                 app.FileData.NoPath = false;
             }
         }
-       
+
+        private void chkDifEp_CheckedChanged(object sender, EventArgs e)
+        {
+            if(chkDifEp.Checked == false)
+            {
+                lblStartCount.Visible = false;
+                numStartingCount.Visible = false;
+                numStartingCount.Value = 1;
+            }
+            else
+            {
+                lblStartCount.Visible = true;
+                numStartingCount.Visible = true;
+            }
+        }
     }
 }

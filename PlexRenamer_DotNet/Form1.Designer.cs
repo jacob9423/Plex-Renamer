@@ -43,10 +43,14 @@
             this.txtSubtitles = new System.Windows.Forms.TextBox();
             this.lblSubtitles = new System.Windows.Forms.Label();
             this.dgvData = new System.Windows.Forms.DataGridView();
-            this.lblProgramDone = new System.Windows.Forms.Label();
             this.FilePath = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lblProgramDone = new System.Windows.Forms.Label();
+            this.chkDifEp = new System.Windows.Forms.CheckBox();
+            this.numStartingCount = new System.Windows.Forms.NumericUpDown();
+            this.lblStartCount = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.numupSeason)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvData)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numStartingCount)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -187,6 +191,12 @@
             this.dgvData.Size = new System.Drawing.Size(534, 376);
             this.dgvData.TabIndex = 13;
             // 
+            // FilePath
+            // 
+            this.FilePath.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.FilePath.HeaderText = "File Path";
+            this.FilePath.Name = "FilePath";
+            // 
             // lblProgramDone
             // 
             this.lblProgramDone.AutoSize = true;
@@ -197,17 +207,53 @@
             this.lblProgramDone.Size = new System.Drawing.Size(0, 25);
             this.lblProgramDone.TabIndex = 14;
             // 
-            // FilePath
+            // chkDifEp
             // 
-            this.FilePath.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.FilePath.HeaderText = "File Path";
-            this.FilePath.Name = "FilePath";
+            this.chkDifEp.AutoSize = true;
+            this.chkDifEp.Location = new System.Drawing.Point(18, 280);
+            this.chkDifEp.Name = "chkDifEp";
+            this.chkDifEp.Size = new System.Drawing.Size(182, 17);
+            this.chkDifEp.TabIndex = 15;
+            this.chkDifEp.Text = "Start count from differnt episode?";
+            this.chkDifEp.UseVisualStyleBackColor = true;
+            this.chkDifEp.CheckedChanged += new System.EventHandler(this.chkDifEp_CheckedChanged);
+            // 
+            // numStartingCount
+            // 
+            this.numStartingCount.Location = new System.Drawing.Point(125, 303);
+            this.numStartingCount.Maximum = new decimal(new int[] {
+            500,
+            0,
+            0,
+            0});
+            this.numStartingCount.Name = "numStartingCount";
+            this.numStartingCount.Size = new System.Drawing.Size(43, 20);
+            this.numStartingCount.TabIndex = 16;
+            this.numStartingCount.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numStartingCount.Visible = false;
+            // 
+            // lblStartCount
+            // 
+            this.lblStartCount.AutoSize = true;
+            this.lblStartCount.Location = new System.Drawing.Point(35, 305);
+            this.lblStartCount.Name = "lblStartCount";
+            this.lblStartCount.Size = new System.Drawing.Size(73, 13);
+            this.lblStartCount.TabIndex = 17;
+            this.lblStartCount.Text = "Starting count";
+            this.lblStartCount.Visible = false;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.lblStartCount);
+            this.Controls.Add(this.numStartingCount);
+            this.Controls.Add(this.chkDifEp);
             this.Controls.Add(this.lblProgramDone);
             this.Controls.Add(this.dgvData);
             this.Controls.Add(this.lblSubtitles);
@@ -227,6 +273,7 @@
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.numupSeason)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvData)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numStartingCount)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -250,6 +297,9 @@
         private System.Windows.Forms.DataGridView dgvData;
         private System.Windows.Forms.Label lblProgramDone;
         private System.Windows.Forms.DataGridViewTextBoxColumn FilePath;
+        private System.Windows.Forms.CheckBox chkDifEp;
+        private System.Windows.Forms.NumericUpDown numStartingCount;
+        private System.Windows.Forms.Label lblStartCount;
     }
 }
 
