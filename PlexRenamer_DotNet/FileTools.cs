@@ -11,20 +11,35 @@ namespace PlexRenamer_DotNet
     {
         public Data FileData = new Data();
 
-      
+      //<summary> Gets the list of files in a directory. and puts them in there internal varibles </summary>
+      // For everything to work I need the number of files in that directory, The file paths, the ext, and then
+      // order them starting from episode 0
+      // Arguments: None
+      // Returns:   None
         public void GetFileList()
         {
             FileData.NumOfFiles = Directory.GetFiles(FileData.Path).Count();
             FileData.OldFileNames = Directory.GetFiles(FileData.Path).ToList();
             FileData.OldFileNames = FileData.OldFileNames.OrderBy(n => n).ToList();
-            FileData.NumOfFiles = FileData.OldFileNames.Count();
+           // FileData.NumOfFiles = FileData.OldFileNames.Count();
         }
 
+        //<summary> gets the file ext form the first postion of a list of file paths </summary>
+        // Arguments: 
+        //            FileNames - A list of file names
+        // Returns:   None
         public string GetExt(List<string> FileNames)
         {
             return Path.GetExtension(FileNames[0]);
         }
-        
+
+        //<summary> generates names for the files based on the number of files </summary>
+        //Arguments: 
+        //           List: OldNames - a list of file paths
+        //           int:  OldNameCount - the number of files in that list
+        //           int:  StartingEp - The number to start the episode count
+        //Returns: 
+        //           List: the list of new file names 
         public List<string> GenerateNewNames(List<string> OldNames, int OldNameCount,int StartingEp)
         {
             List<string> NewNames = new List<string>();
@@ -51,6 +66,14 @@ namespace PlexRenamer_DotNet
 
             return NewNames;
         }
+
+        //<summary> generates names for the files based on the number of files (for subtitle files) </summary>
+        //Arguments: 
+        //           List: OldNames - a list of file paths
+        //           int:  OldNameCount - the number of files in that list
+        //           int:  StartingEp - The number to start the episode count
+        //Returns: 
+        //           List: the list of new file names
         public List<string> GenerateNewNamesForSubs(List<string> OldNames, int OldNameCount, int StartingEp)
         {
             List<string> NewNames = new List<string>();
@@ -82,15 +105,15 @@ namespace PlexRenamer_DotNet
 
             return NewNames;
         }
-
+        // <summary> Renames the files in the directory </summary>
+        // Arguments: None
+        // Returns: None
         public void RenameFiles()
         {
             for (int i = 0; i < FileData.NumOfFiles; i++)
             {
                 System.IO.File.Move(FileData.OldFileNames[i], FileData.NewFileNames[i]);
             }
-
-            Console.WriteLine("Done");
         }
     }
 }
