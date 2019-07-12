@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -26,10 +26,7 @@ namespace PlexRenamer_DotNet
 
         private void btnChooseDirectory_Click(object sender, EventArgs e)
         {
-            DirectforyFinder.ShowDialog();
-            app.FileData.Path = DirectforyFinder.SelectedPath;
-            lblPath.Text = app.FileData.Path;
-            app.FileData.NoPath = false;
+            getDirectory();
         }
 
         private void btnCheck_Click(object sender, EventArgs e)
@@ -105,7 +102,20 @@ namespace PlexRenamer_DotNet
             app.FileData.NameOfShow = txtShow.Text;
             app.FileData.Season = Convert.ToInt32(numupSeason.Value);
             app.GetFileList();
-            app.FileData.FileType = app.GetExt(app.FileData.OldFileNames);
+            
+            // to fix a bug where if the user picks a folder with only folders in it the program will error out.
+            try
+            {
+                app.FileData.FileType = app.GetExt(app.FileData.OldFileNames);
+            }
+            catch
+            {
+               MessageBox.Show("Are you trying to rename a Folder without video files in it? Please select another folder");
+               
+               getDirectory();
+            }
+        
+            
         }
         
         private void DisplayData(List<string> listToDisplay)
@@ -125,11 +135,18 @@ namespace PlexRenamer_DotNet
         {
             if (app.FileData.NoPath)
             {
-                DirectforyFinder.ShowDialog();
-                app.FileData.Path = DirectforyFinder.SelectedPath;
-                app.FileData.NoPath = false;
+               getDirectory();
             }
         }
+
+        private void getDirectory()
+        {
+            DirectforyFinder.ShowDialog();
+            app.FileData.Path = DirectforyFinder.SelectedPath;
+            lblPath.Text = app.FileData.Path;
+            app.FileData.NoPath = false;
+        }
+
 
         private void chkDifEp_CheckedChanged(object sender, EventArgs e)
         {
@@ -145,5 +162,6 @@ namespace PlexRenamer_DotNet
                 numStartingCount.Visible = true;
             }
         }
+       
     }
 }
