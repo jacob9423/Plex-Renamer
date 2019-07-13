@@ -21,7 +21,6 @@ namespace PlexRenamer_DotNet
             FileData.NumOfFiles = Directory.GetFiles(FileData.Path).Count();
             FileData.OldFileNames = Directory.GetFiles(FileData.Path).ToList();
             FileData.OldFileNames = FileData.OldFileNames.OrderBy(n => n).ToList();
-           // FileData.NumOfFiles = FileData.OldFileNames.Count();
         }
 
         //<summary> gets the file ext form the first postion of a list of file paths </summary>

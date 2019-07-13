@@ -96,7 +96,29 @@ namespace PlexRenamer_DotNet
                 txtSubtitles.Visible = false;
             }
         }
+        private void chkDifEp_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkDifEp.Checked == false)
+            {
+                lblStartCount.Visible = false;
+                numStartingCount.Visible = false;
+                numStartingCount.Value = 1;
+            }
+            else
+            {
+                lblStartCount.Visible = true;
+                numStartingCount.Visible = true;
+            }
+        }
 
+        //Functions --------------------------------------------------------------------------------------------------------------------------------
+
+        //<summary> Gets the inital show data from user input</summary>
+        // Gets the userinput from the textbox season number box and puts them into varibles to use later.
+        // Also gets the list of files from the directory that was picked by the  user and checks to make sure there is files in that directory and not just folders.
+        // it does this by just checking to see if it gets an exception.
+        // Arguments: None
+        // Returns:   None
         private void GetShowData()
         {
             app.FileData.NameOfShow = txtShow.Text;
@@ -116,7 +138,11 @@ namespace PlexRenamer_DotNet
             }
             
         }
-        
+
+        //<summary> Displays the data to the DataGrid</summary>
+     
+        // Arguments: listToDisplay
+        // Returns:   None
         private void DisplayData(List<string> listToDisplay)
         {
             foreach (var list in listToDisplay)
@@ -124,6 +150,7 @@ namespace PlexRenamer_DotNet
                 dgvData.Rows.Add(list);
             }
         }
+
         private void ClearDataGrid()
         {
             dgvData.Rows.Clear();
@@ -147,20 +174,7 @@ namespace PlexRenamer_DotNet
         }
 
 
-        private void chkDifEp_CheckedChanged(object sender, EventArgs e)
-        {
-            if(chkDifEp.Checked == false)
-            {
-                lblStartCount.Visible = false;
-                numStartingCount.Visible = false;
-                numStartingCount.Value = 1;
-            }
-            else
-            {
-                lblStartCount.Visible = true;
-                numStartingCount.Visible = true;
-            }
-        }
+       
        
     }
 }
