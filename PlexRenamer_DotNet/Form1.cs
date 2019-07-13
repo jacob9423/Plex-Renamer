@@ -114,7 +114,6 @@ namespace PlexRenamer_DotNet
                
                getDirectory();
             }
-        
             
         }
         

@@ -64,7 +64,7 @@ namespace PlexRenamer_DotNet
                 EpCount++;
             }
 
-            return NewNames;
+            return NewNames;              
         }
 
         //<summary> generates names for the files based on the number of files (for subtitle files) </summary>
