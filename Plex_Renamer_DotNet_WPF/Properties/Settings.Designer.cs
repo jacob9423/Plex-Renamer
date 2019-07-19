@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace PlexRenamer_DotNet.Properties
+namespace Plex_Renamer_DotNet_WPF.Properties
 {
 
 

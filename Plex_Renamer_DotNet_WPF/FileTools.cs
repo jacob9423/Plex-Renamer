@@ -5,17 +5,17 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 
-namespace PlexRenamer_DotNet
+namespace Plex_Renamer_DotNet_WPF
 {
     class FileTools
     {
         public Data FileData = new Data();
 
-      //<summary> Gets the list of files in a directory. and puts them in there internal varibles </summary>
-      // For everything to work I need the number of files in that directory, The file paths, the ext, and then
-      // order them starting from episode 0
-      // Arguments: None
-      // Returns:   None
+        //<summary> Gets the list of files in a directory. and puts them in there internal varibles </summary>
+        // For everything to work I need the number of files in that directory, The file paths, the ext, and then
+        // order them starting from episode 0
+        // Arguments: None
+        // Returns:   None
         public void GetFileList()
         {
             FileData.NumOfFiles = Directory.GetFiles(FileData.Path).Count();
@@ -39,7 +39,7 @@ namespace PlexRenamer_DotNet
         //           int:  StartingEp - The number to start the episode count
         //Returns: 
         //           List: the list of new file names 
-        public List<string> GenerateNewNames(List<string> OldNames, int OldNameCount,int StartingEp)
+        public List<string> GenerateNewNames(List<string> OldNames, int OldNameCount, int StartingEp)
         {
             List<string> NewNames = new List<string>();
             string SeasonString = FileData.Season.ToString();
@@ -63,7 +63,7 @@ namespace PlexRenamer_DotNet
                 EpCount++;
             }
 
-            return NewNames;              
+            return NewNames;
         }
 
         //<summary> generates names for the files based on the number of files (for subtitle files) </summary>

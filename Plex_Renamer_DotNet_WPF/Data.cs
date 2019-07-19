@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PlexRenamer_DotNet
+namespace Plex_Renamer_DotNet_WPF
 {
     class Data
     {
@@ -19,17 +19,28 @@ namespace PlexRenamer_DotNet
         public bool NoPath = true;
         public int StartingEp = 1;
 
-        public void ClearData()
+        
+        //<summary> Used to tell the program to clear the directory Bool or not </summary>
+        public void ClearData(bool ClearDirectory)
         {
+            if (ClearDirectory == false)
+            {
+                // no need to change path
+                NoPath = false;
+            }
+            else
+            {
+                Path = "null";
+                NoPath = true;
+            }
             OldFileNames.Clear();
             NewFileNames.Clear();
-            Path = "null";
-            NoPath = true;
             FileType = "null";
             NumOfFiles = 0;
             NameOfShow = "Please enter show name";
             SubLang = null;
             Season = 0;
+
         }
     }
 }
