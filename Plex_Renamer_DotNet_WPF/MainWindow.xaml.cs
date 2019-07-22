@@ -33,16 +33,12 @@ namespace Plex_Renamer_DotNet_WPF
         private void BtnChooseDirectory_Click(object sender, RoutedEventArgs e)
         {
             GetDirectory();
+            CheckDirectory();
         }
    
         private void BtnCheck_Click(object sender, RoutedEventArgs e)
         {
-
-            CheckIfNoPath();
-
-            GetShowData();
-
-             DisplayData(app.FileData.OldFileNames);
+            CheckDirectory();
         }
         private void BtnRename_Click(object sender, RoutedEventArgs e)
         {
@@ -151,7 +147,6 @@ namespace Plex_Renamer_DotNet_WPF
             app.FileData.Path = dialog.SelectedPath;
             txtPath.Text = app.FileData.Path;
             app.FileData.NoPath = false;
-            Console.WriteLine("test");
         }
         //<summary> Used to check if a directory has been selected and if not. make the user select one</summary>
         // Arguments: None
@@ -169,6 +164,18 @@ namespace Plex_Renamer_DotNet_WPF
         private void DisplayData(List<string> listToDisplay)
         {
             liViewData.ItemsSource = listToDisplay;
+        }
+
+        //<summary> Used to check directory file order </summary>
+        // Arguments: None
+        // Returns:   None
+        private void CheckDirectory()
+        {
+            CheckIfNoPath();
+
+            GetShowData();
+
+            DisplayData(app.FileData.OldFileNames);
         }
         
     }

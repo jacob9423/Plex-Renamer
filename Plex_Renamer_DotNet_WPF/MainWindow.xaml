@@ -39,8 +39,8 @@
         <CheckBox x:Name="chkSubtitles" Grid.Row="3" Margin="102,8,2,119" Checked="chkSubtitles_CheckedChanged" Unchecked="chkSubtitles_CheckedChanged"/>
         <!--hidden unless checked-->
         <Label x:Name="lblSubtitles" Grid.Row="3" Margin="0,28,129,71" Grid.ColumnSpan="2" Visibility="Hidden" Content="3-letter language ID &#xA;    (Default English)" />
-        <TextBox x:Name="txtSubtitles" Grid.Row="3" Margin="24,71,32,53" Visibility="Hidden" ></TextBox>
-        <Label x:Name="lblSubWarning" Grid.Row="4" Visibility="Visible" Margin="0,0,4,10" Content="Pressing rename will&#xD;&#xA;rename ALL files in&#xD;&#xA;directory. Please&#xD;&#xA;separate subtitles into&#xD;&#xA;a separate directory" Grid.Column="1"/>
+        <wpfTool:WatermarkTextBox x:Name="txtSubtitles" Grid.Row="3" Margin="24,71,32,53" Visibility="Hidden" Watermark="ENG"></wpfTool:WatermarkTextBox>
+        <Label x:Name="lblSubWarning" Grid.Row="3" Visibility="Visible" Margin="125,146.8,131,9.6" Content="Pressing rename will&#xD;&#xA;rename ALL files in&#xD;&#xA;directory. Please&#xD;&#xA;separate subtitles into&#xD;&#xA;a separate directory" Grid.ColumnSpan="3" Grid.RowSpan="2"/>
 
         <!--controls for starting from a differnt episode-->
         <Label Grid.Row="3" FontSize="12" Content="Episode &#xD;&#xA;Start count" ToolTip="Start Episode from a differnt count? EX: Start from episode 7" Margin="1,0,55,105" Grid.Column="1"/>
@@ -52,8 +52,8 @@
 
 
         <!--Buttons for checking and renaming files-->
-        <Button x:Name="btnCheck" Grid.Row="4" Margin="9,9,12,56" Content="Check" ToolTip="Just a sanity check. It will show you the order it wil rename the files." Click="BtnCheck_Click"/>
-        <Button x:Name="btnRename" Grid.Row="4" Margin="9,53,12,12" Content="Rename" RenderTransformOrigin="0.501,0.5" Click="BtnRename_Click"/>
+        <Button x:Name="btnCheck"  Grid.Row="4" Margin="9,9,12,56" Content="Refresh List" ToolTip="Just a sanity check. It will show you the order it wil rename the files." Click="BtnCheck_Click"/>
+        <Button x:Name="btnRename" Grid.Row="4" Margin="9,0,12.4,11.6" Content="Rename" RenderTransformOrigin="0.501,0.5" Click="BtnRename_Click" Height="39" VerticalAlignment="Bottom"/>
         <ListView x:Name="liViewData"  HorizontalAlignment="Left" Height="312" Grid.RowSpan="4" VerticalAlignment="Top" Width="512" Grid.Column="2" Grid.ColumnSpan="4" Grid.Row="1">
             <ListView.View>
                 <GridView>
