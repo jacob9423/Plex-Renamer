@@ -44,7 +44,11 @@ namespace Plex_Renamer_DotNet_WPF
         {
             // to check if ther user is running this program a secound time. 
             //If so they could have already picked a directory and would like to use the one they already selected
-            if (app.FileData.NumOfFiles != 0 && app.FileData.NoPath == false)
+            if(app.FileData.FirstRun == true)
+            {
+                //get out of if statements and go on and run the program
+            }
+            else if (app.FileData.NumOfFiles != 0 && app.FileData.NoPath == false)
             {
                 app.FileData.ClearData(false);
             }
@@ -60,8 +64,12 @@ namespace Plex_Renamer_DotNet_WPF
             GetShowData();
 
 
-            if (lblSubtitles.IsVisible)
+            if (chkSubtitles.IsChecked == true)
             {
+                if(txtSubtitles.Text != null)
+                {
+                    app.FileData.SubLang = txtSubtitles.Text;
+                }
                 app.FileData.NewFileNames = app.GenerateNewNamesForSubs(app.FileData.OldFileNames, app.FileData.NumOfFiles, (int)app.FileData.StartingEp);
             }
             else
@@ -109,6 +117,7 @@ namespace Plex_Renamer_DotNet_WPF
             {
                 numStartingCount.Visibility = Visibility.Visible;
             }
+            app.FileData.FirstRun = false;
         }
         //Functions --------------------------------------------------------------------------------------------------------------------------------
 
@@ -143,9 +152,11 @@ namespace Plex_Renamer_DotNet_WPF
         private void GetDirectory()
         {
             var dialog = new WinForm.FolderBrowserDialog();
+            dialog.SelectedPath = app.FileData.InitalPath;
             dialog.ShowDialog();
             app.FileData.Path = dialog.SelectedPath;
             txtPath.Text = app.FileData.Path;
+            app.FileData.InitalPath = app.FileData.Path;
             app.FileData.NoPath = false;
         }
         //<summary> Used to check if a directory has been selected and if not. make the user select one</summary>
