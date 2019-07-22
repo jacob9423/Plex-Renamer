@@ -149,7 +149,7 @@ namespace Plex_Renamer_DotNet_WPF
             var dialog = new WinForm.FolderBrowserDialog();
             dialog.ShowDialog();
             app.FileData.Path = dialog.SelectedPath;
-            lblPath.Content = app.FileData.Path;
+            txtPath.Text = app.FileData.Path;
             app.FileData.NoPath = false;
             Console.WriteLine("test");
         }
