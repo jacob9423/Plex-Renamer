@@ -90,7 +90,8 @@ namespace Plex_Renamer_DotNet_WPF
                 DisplayData(app.FileData.OldFileNames);
                 app.FileData.NoPath = true;
             }
-          
+            app.FileData.FirstRun = false;
+
         }
 
         private void chkSubtitles_CheckedChanged(object sender, RoutedEventArgs e)
@@ -117,7 +118,6 @@ namespace Plex_Renamer_DotNet_WPF
             {
                 numStartingCount.Visibility = Visibility.Visible;
             }
-            app.FileData.FirstRun = false;
         }
         //Functions --------------------------------------------------------------------------------------------------------------------------------
 
@@ -152,11 +152,12 @@ namespace Plex_Renamer_DotNet_WPF
         private void GetDirectory()
         {
             var dialog = new WinForm.FolderBrowserDialog();
-            dialog.SelectedPath = app.FileData.InitalPath;
+            dialog.SelectedPath = Properties.Settings.Default.InitialPath;
             dialog.ShowDialog();
             app.FileData.Path = dialog.SelectedPath;
             txtPath.Text = app.FileData.Path;
-            app.FileData.InitalPath = app.FileData.Path;
+            Properties.Settings.Default.InitialPath = app.FileData.Path;
+            Properties.Settings.Default.Save();
             app.FileData.NoPath = false;
         }
         //<summary> Used to check if a directory has been selected and if not. make the user select one</summary>
