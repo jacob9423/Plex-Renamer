@@ -189,6 +189,32 @@ namespace Plex_Renamer_DotNet_WPF
 
             DisplayData(app.FileData.OldFileNames);
         }
-        
+
+        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://github.com/jacob9423/Plex-Renamer/releases");
+        }
+
+        private void MenuItem_Click_1(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Created by: Jacob Barfield" + "\n" + "This program will rename any video file into plex naming standards (TV Shows only)");
+        }
+
+        private void MenuItem_Click_2(object sender, RoutedEventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://github.com/jacob9423/Plex-Renamer");
+        }
+
+        private void MenuItem_Click_3(object sender, RoutedEventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://github.com/jacob9423/Plex-Renamer/wiki/Subtitle-Naming");
+        }
+
+        private void MenuItem_Click_4(object sender, RoutedEventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://github.com/jacob9423/Plex-Renamer/wiki/Subtitle-Naming");
+        }
+
+
     }
 }

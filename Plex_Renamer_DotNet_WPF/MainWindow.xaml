@@ -23,6 +23,19 @@
             <RowDefinition Height="147*"></RowDefinition>
             <RowDefinition Height="103*"></RowDefinition>
         </Grid.RowDefinitions>
+        <DockPanel>
+            <Menu DockPanel.Dock="Top">
+                <MenuItem Header="Help">
+                    <MenuItem Header="About">
+                        <MenuItem Header="Creator" Click="MenuItem_Click_1"></MenuItem>
+                        <MenuItem Header="GitHub" Click="MenuItem_Click_2"></MenuItem>
+                    </MenuItem>
+                    <MenuItem Header="Updates" Click="MenuItem_Click"></MenuItem>
+                    <MenuItem Header="Subtitle naming" Click="MenuItem_Click_3"></MenuItem>
+                    <MenuItem Header="Episode Start Count" Click="MenuItem_Click_4"></MenuItem>
+                </MenuItem>
+            </Menu>
+        </DockPanel>
         <!--For the driectory selecting-->
         <TextBox Name="txtPath" FontSize="12" IsReadOnly="True" Grid.Column="1" BorderThickness="2" Grid.ColumnSpan="5" Margin="10,29,10,30"/>
         <Button x:Name="btnChooseDirectory" Margin="7,28,12,30" Click="BtnChooseDirectory_Click">Pick Directory</Button>
