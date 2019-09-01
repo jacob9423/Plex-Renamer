@@ -212,7 +212,7 @@ namespace Plex_Renamer_DotNet_WPF
 
         private void MenuItem_Click_4(object sender, RoutedEventArgs e)
         {
-            System.Diagnostics.Process.Start("https://github.com/jacob9423/Plex-Renamer/wiki/Subtitle-Naming");
+            System.Diagnostics.Process.Start("https://github.com/jacob9423/Plex-Renamer/wiki/Episode-start-count");
         }
 
 
