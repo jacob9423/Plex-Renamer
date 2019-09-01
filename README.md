@@ -1,5 +1,5 @@
 # Plex-Renamer WPF version
-Plex renamer is now on WPF insted of winforms. If you needed the winform version for something it is now  in a brance of this project. Called WinForm-Ver. I'm very excited to finally move this off of Winforms because some of my friends have been bugging me about it.
+Plex renamer is now on WPF insted of winforms. If you needed the winform version for something it is now  in a branch of this project. Called WinForm-Ver. I'm very excited to finally move this off of Winforms because some of my friends have been bugging me about it.
 
 A program that will take a directory of video files and then name them in Plex format
 
