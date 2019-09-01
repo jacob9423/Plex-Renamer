@@ -33,22 +33,22 @@ namespace Plex_Renamer_DotNet_WPF
         private void BtnChooseDirectory_Click(object sender, RoutedEventArgs e)
         {
             GetDirectory();
+            CheckDirectory();
         }
    
         private void BtnCheck_Click(object sender, RoutedEventArgs e)
         {
-
-            CheckIfNoPath();
-
-            GetShowData();
-
-             DisplayData(app.FileData.OldFileNames);
+            CheckDirectory();
         }
         private void BtnRename_Click(object sender, RoutedEventArgs e)
         {
             // to check if ther user is running this program a secound time. 
             //If so they could have already picked a directory and would like to use the one they already selected
-            if (app.FileData.NumOfFiles != 0 && app.FileData.NoPath == false)
+            if(app.FileData.FirstRun == true)
+            {
+                //get out of if statements and go on and run the program
+            }
+            else if (app.FileData.NumOfFiles != 0 && app.FileData.NoPath == false)
             {
                 app.FileData.ClearData(false);
             }
@@ -64,8 +64,12 @@ namespace Plex_Renamer_DotNet_WPF
             GetShowData();
 
 
-            if (lblSubtitles.IsVisible)
+            if (chkSubtitles.IsChecked == true)
             {
+                if(txtSubtitles.Text != null)
+                {
+                    app.FileData.SubLang = txtSubtitles.Text;
+                }
                 app.FileData.NewFileNames = app.GenerateNewNamesForSubs(app.FileData.OldFileNames, app.FileData.NumOfFiles, (int)app.FileData.StartingEp);
             }
             else
@@ -86,7 +90,8 @@ namespace Plex_Renamer_DotNet_WPF
                 DisplayData(app.FileData.OldFileNames);
                 app.FileData.NoPath = true;
             }
-          
+            app.FileData.FirstRun = false;
+
         }
 
         private void chkSubtitles_CheckedChanged(object sender, RoutedEventArgs e)
@@ -147,11 +152,13 @@ namespace Plex_Renamer_DotNet_WPF
         private void GetDirectory()
         {
             var dialog = new WinForm.FolderBrowserDialog();
+            dialog.SelectedPath = Properties.Settings.Default.InitialPath;
             dialog.ShowDialog();
             app.FileData.Path = dialog.SelectedPath;
             txtPath.Text = app.FileData.Path;
+            Properties.Settings.Default.InitialPath = app.FileData.Path;
+            Properties.Settings.Default.Save();
             app.FileData.NoPath = false;
-            Console.WriteLine("test");
         }
         //<summary> Used to check if a directory has been selected and if not. make the user select one</summary>
         // Arguments: None
@@ -207,6 +214,7 @@ namespace Plex_Renamer_DotNet_WPF
         {
             System.Diagnostics.Process.Start("https://github.com/jacob9423/Plex-Renamer/wiki/Subtitle-Naming");
         }
+
 
     }
 }

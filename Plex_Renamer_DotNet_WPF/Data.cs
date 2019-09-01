@@ -11,12 +11,14 @@ namespace Plex_Renamer_DotNet_WPF
         public List<string> OldFileNames { get; set; }
         public List<string> NewFileNames { get; set; }
         public string Path { get; set; }
+        public string InitalPath { get; set; } // for opening up directory viewer in the path that was previously selected
         public string FileType { get; set; }
         public int NumOfFiles { get; set; }
         public string NameOfShow { get; set; }
         public int Season { get; set; }
         public string SubLang { get; set; }
         public bool NoPath = true;
+        public bool FirstRun = true;
         public int StartingEp = 1;
 
         
