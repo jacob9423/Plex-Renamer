@@ -26,11 +26,13 @@
         <DockPanel>
             <Menu DockPanel.Dock="Top">
                 <MenuItem Header="Help">
-                    <MenuItem Header="About" Click="MenuItem_Click_1"></MenuItem>
+                    <MenuItem Header="About">
+                        <MenuItem Header="Creator" Click="MenuItem_Click_1"></MenuItem>
+                        <MenuItem Header="GitHub" Click="MenuItem_Click_2"></MenuItem>
+                    </MenuItem>
                     <MenuItem Header="Updates" Click="MenuItem_Click"></MenuItem>
-                    <MenuItem Header="Subtitle naming"></MenuItem>
-                    <MenuItem Header="Episode Start Count"></MenuItem>
-                    <MenuItem Header="Check Button"></MenuItem>
+                    <MenuItem Header="Subtitle naming" Click="MenuItem_Click_3"></MenuItem>
+                    <MenuItem Header="Episode Start Count" Click="MenuItem_Click_4"></MenuItem>
                 </MenuItem>
             </Menu>
         </DockPanel>
