@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Plex_Renamer_DotNet_WPF"
         xmlns:wpfTool="clr-namespace:Xceed.Wpf.Toolkit;assembly=Xceed.Wpf.Toolkit"
         mc:Ignorable="d"
-        Title="Plex Renamer DotNet" Height="450" Width="800" Background="#FFF0F0F0" ResizeMode="NoResize">
+        Title="Plex Renamer DotNet" Height="450" Width="800" Background="#FFF0F0F0" ResizeMode="CanMinimize">
     <Grid Margin="5">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="10*"></ColumnDefinition>
