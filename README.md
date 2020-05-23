@@ -1,4 +1,6 @@
-# Plex-Renamer WPF version
+# Plex-Renamer WPF version - No longer updated
+The C# Version of this program will no longer be updated. I will be continuing development on the Electron Version [here](https://github.com/jacob9423/PlexRenamerJS)
+
 Plex renamer is now on WPF insted of winforms. If you needed the winform version for something it is now  in a branch of this project. Called WinForm-Ver. I'm very excited to finally move this off of Winforms because some of my friends have been bugging me about it.
 
 A program that will take a directory of video files and then name them in Plex format
